@@ -108,9 +108,9 @@ export function Tamagotchi() {
 
   const feed = () => {
     if (gameOver) return;
-    setHunger((prev) => Math.min(Math.floor(prev + 20), 100)); // Redondeamos a entero
-    setHealth((prev) => Math.min(Math.floor(prev + 5), 100)); // Redondeamos a entero
-    setEnergy((prev) => Math.max(Math.floor(prev - 5), 0)); // Redondeamos a entero
+    setHunger((prev) => Math.min(Math.floor(prev + 20), 100)); 
+    setHealth((prev) => Math.min(Math.floor(prev + 5), 100));
+    setEnergy((prev) => Math.max(Math.floor(prev - 5), 0));
   };
 
   const play = () => {
@@ -205,6 +205,13 @@ export function Tamagotchi() {
   return (
     <div className="flex">
       <div className="w-2/3 p-4 bg-white">
+      <div className="flex justify-center mb-4">
+          <img
+            src="/tumblr_f94d1715779ac36beb437479b1803c9c_5f569f71_1280.gif"
+            alt="Cute animation"
+            className="w-48 h-48"
+          />
+        </div>
         <h2 className="text-xl font-bold">Nivel {level}</h2>
         <div className="mt-4">
           <div className="flex items-center">
@@ -268,29 +275,28 @@ export function Tamagotchi() {
         </div>
         <div className="mt-4">
           <p>{getStatusMessage()}</p>
-          {battleResult && <p>{battleResult}</p>} {/* Mostrar el resultado de la pelea */}
+          {battleResult && <p>{battleResult}</p>} 
         </div>
       </div>
 
       {/* Tienda */}
-      <div className="w-1/3 p-4 bg-gray-200">
-        <h3 className="text-xl font-bold">Tienda</h3>
-        <div className="mt-4">
-          <p className="font-semibold">Monedas: {coins}</p>
-          <div className="mt-4">
-            <button
-              onClick={() => buyItem({ type: "hunger", cost: 500 })}
-              className="bg-green-500 text-white p-2 rounded w-full">Comida (500 monedas)</button>
-            <button
-              onClick={() => buyItem({ type: "happiness", cost: 500 })}
-              className="bg-blue-500 text-white p-2 rounded w-full mt-2">Juguete (500 monedas)</button>
-            <button
-              onClick={() => buyItem({ type: "hygiene", cost: 500 })}
-              className="bg-purple-500 text-white p-2 rounded w-full mt-2">Cepillo (500 monedas)</button>
-            <button
-              onClick={() => buyItem({ type: "energy", cost: 500 })}
-              className="bg-yellow-500 text-white p-2 rounded w-full mt-2">Energizante (500 monedas)</button>
-          </div>
+      <div className="w-1/3 p-4 bg-gray-200 flex flex-col items-center justify-center rounded-lg shadow-xl">
+        <h3 className="text-xl font-bold mb-4 text-center">Tienda</h3>
+        <p className="font-semibold mb-4 text-center">Monedas: {coins}</p>
+        
+        <div className="space-y-4 w-full">
+          <button
+            onClick={() => buyItem({ type: "hunger", cost: 500 })}
+            className="bg-green-500 text-white p-3 rounded-lg shadow-lg hover:bg-green-600 transition duration-200 w-full">Comida (500 monedas)</button>
+          <button
+            onClick={() => buyItem({ type: "happiness", cost: 500 })}
+            className="bg-blue-500 text-white p-3 rounded-lg shadow-lg hover:bg-blue-600 transition duration-200 w-full">Juguete (500 monedas)</button>
+          <button
+            onClick={() => buyItem({ type: "hygiene", cost: 500 })}
+            className="bg-purple-500 text-white p-3 rounded-lg shadow-lg hover:bg-purple-600 transition duration-200 w-full">Cepillo (500 monedas)</button>
+          <button
+            onClick={() => buyItem({ type: "energy", cost: 500 })}
+            className="bg-yellow-500 text-white p-3 rounded-lg shadow-lg hover:bg-yellow-600 transition duration-200 w-full">Energizante (500 monedas)</button>
         </div>
       </div>
     </div>
